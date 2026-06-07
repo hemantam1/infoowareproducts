@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sales & Distribution Cloud — Field sales productivity, secondary sales visibility, and distributor accountability — all in one platform, with an AI Sales Copilot that turns every rep into your top rep.">
+<title>Sales & Distribution Cloud · Infooware Platforms</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+<style>
+/* ===== Screenshot styling ===== */
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow:
+    0 1px 2px rgba(31, 92, 107, 0.08),
+    0 12px 32px rgba(31, 92, 107, 0.18),
+    0 32px 64px rgba(31, 92, 107, 0.10);
+  border: 1px solid var(--line);
+  background: #fff;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+.shot:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 2px 4px rgba(31, 92, 107, 0.10),
+    0 24px 48px rgba(31, 92, 107, 0.22),
+    0 48px 80px rgba(31, 92, 107, 0.12);
+}
+.shot-frame {
+  position: relative;
+  border-radius: 16px;
+  padding: 24px;
+  background: linear-gradient(135deg, var(--cream-light) 0%, var(--cream-dark) 100%);
+  margin: 0;
+}
+.shot-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: radial-gradient(circle at 30% 0%, rgba(45, 141, 168, 0.10), transparent 60%);
+  pointer-events: none;
+}
+.shot-frame img { position: relative; }
+.shot-caption {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 18px;
+  font-weight: 600;
+}
+
+/* Hero with side-by-side text + screenshot */
+.hero-with-shot {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (max-width: 980px) {
+  .hero-with-shot { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* Card with embedded thumbnail */
+.product-card-shot {
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.product-card-shot .shot-wrap {
+  background: linear-gradient(135deg, #F4ECD8 0%, #E8DCC0 100%);
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.product-card-shot .shot-wrap img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+  box-shadow: 0 4px 16px rgba(31, 92, 107, 0.12);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-card-shot:hover .shot-wrap img { transform: scale(1.02); }
+.product-card-shot .body { padding: 28px 28px 28px; flex: 1; display: flex; flex-direction: column; }
+
+/* Client logos strip — uses the image23 collage cropped */
+.trust-strip {
+  padding: 56px 32px;
+  background: var(--cream-light);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.trust-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+.trust-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.trust-headline {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--teal-deep);
+  margin-bottom: 36px;
+}
+.trust-headline em { font-style: italic; }
+.trust-headline strong { font-weight: 700; font-style: normal; }
+.trust-logos {
+  display: block;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(31, 92, 107, 0.10);
+}
+
+/* Product hero with bigger detail screenshot */
+.product-detail-hero {
+  padding: 80px 32px 60px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.product-detail-hero .shot-frame {
+  margin-top: 48px;
+  padding: 28px;
+}
+
+/* Feature row — alternating screenshot + text */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 64px 0;
+  border-bottom: 1px solid var(--line);
+}
+.feature-row:last-of-type { border-bottom: none; }
+.feature-row.reverse { direction: rtl; }
+.feature-row.reverse > * { direction: ltr; }
+@media (max-width: 980px) {
+  .feature-row { grid-template-columns: 1fr; gap: 40px; padding: 48px 0; }
+  .feature-row.reverse { direction: ltr; }
+}
+.feature-text h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.feature-text h3 em { font-style: italic; color: var(--teal-deep); }
+.feature-text h3 strong { font-weight: 700; font-style: normal; }
+.feature-text .feature-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.feature-text p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+.feature-text ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+}
+.feature-text ul li {
+  font-size: 14px;
+  padding: 6px 0 6px 22px;
+  position: relative;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.feature-text ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+</style>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="topbar-brand" href="index.html">
+      <img src="assets/logo.png" alt="Infooware">
+      <span class="topbar-brand-text">
+        <span class="name">Infooware</span>
+        <span class="tag">Platforms</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="nav"><a href="index.html">Home</a><a href="products.html" class="active">Products</a><a href="industry-solutions.html">Industry Solutions</a><a href="ai.html">AI</a><a href="partners.html">Partners</a></nav>
+    <a class="topbar-cta" href="demo.html">Request Demo</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-with-shot">
+      <div class="reveal">
+        <div class="product-hero-strip"><span class="dot"></span> PRODUCT · 01 · <span class="ai-badge" style="background: var(--gold); color: var(--ink); font-size: 9px; padding: 2px 8px;">AI EMBEDDED</span></div>
+        <h1 class="display"><strong>Sales & Distribution Cloud</strong></h1>
+        <p class="lead">Field sales productivity, secondary sales visibility, and distributor accountability — all in one platform, with an AI Sales Copilot that turns every rep into your top rep.</p>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="demo.html">Request Demo</a>
+          <a class="btn btn-secondary" href="products.html">All Platforms</a>
+        </div>
+      </div>
+      <div class="shot-frame reveal">
+        <img class="shot" src="assets/screenshots/sales-cloud.jpg" alt="Sales & Distribution Cloud dashboard">
+        <div class="shot-caption">Sales & Distribution Cloud · Live Production UI</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner reveal">
+      <div class="eyebrow">Business Problems Solved</div>
+      <h2 class="section-title">What this platform <em>actually</em> <strong>fixes.</strong></h2>
+    </div>
+    <div class="section-inner card-grid card-grid-3">
+      <div class="card reveal">
+        <span class="card-num">PROBLEM · 01</span>
+        <h3 class="card-title">Reps Lose the Day to Paper</h3>
+        <p>Manual order books, illegible signatures, and end-of-day data entry kill productivity and create dispute cycles.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">PROBLEM · 02</span>
+        <h3 class="card-title">Secondary Sales Blackout</h3>
+        <p>Once a distributor takes inventory, brands lose sight of what actually moves to retail. No visibility, no levers.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">PROBLEM · 03</span>
+        <h3 class="card-title">Beat Plans That Drift</h3>
+        <p>Routes drawn six months ago no longer match reality. Reps cherry-pick easy outlets. Coverage degrades silently.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">PROBLEM · 04</span>
+        <h3 class="card-title">Slow Order-to-Cash</h3>
+        <p>Paper order → distributor entry → invoice → dispatch. Days of lag where there should be minutes.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">PROBLEM · 05</span>
+        <h3 class="card-title">Inconsistent Retail Execution</h3>
+        <p>Planograms, promotions and visibility audits depend on rep diligence. Quality is a coin flip.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">PROBLEM · 06</span>
+        <h3 class="card-title">No Coaching Loop</h3>
+        <p>Managers can't see why one rep crushes targets and another doesn't. No data, no coaching, no improvement.</p>
+      </div></div>
+  </section>
+
+  <section class="section" style="background: linear-gradient(180deg, transparent, rgba(31, 92, 107, 0.04) 50%, transparent);">
+    <div class="section-inner reveal">
+      <div class="eyebrow">Key Modules</div>
+      <h2 class="section-title">Everything <em>under one</em> <strong>platform.</strong></h2>
+    </div>
+    <div class="section-inner module-list reveal"><div class="module"><div class="module-icon">✓</div><div class="module-name">Primary Sales</div></div><div class="module"><div class="module-icon">✓</div><div class="module-name">Secondary Sales</div></div><div class="module"><div class="module-icon">✓</div><div class="module-name">Distributor Management</div></div><div class="module"><div class="module-icon">✓</div><div class="module-name">Van Sales</div></div><div class="module"><div class="module-icon">✓</div><div class="module-name">Retail Execution</div></div><div class="module"><div class="module-icon">✓</div><div class="module-name">Beat Planning</div></div><div class="module"><div class="module-icon">✓</div><div class="module-name">Merchandising</div></div><div class="module"><div class="module-icon">✓</div><div class="module-name">Route Optimization</div></div><div class="module"><div class="module-icon">✓</div><div class="module-name">Order Booking Mobile App</div></div><div class="module"><div class="module-icon">✓</div><div class="module-name">Live Tracking</div></div><div class="module"><div class="module-icon">AI</div><div class="module-name">AI Sales Copilot</div></div></div>
+  </section>
+
+  
+  <section class="section">
+    <div class="section-inner reveal" style="text-align: center; margin-bottom: 48px;">
+      <div class="eyebrow" style="justify-content: center; display: inline-flex;">More Product UI</div>
+      <h2 class="section-title" style="margin: 0 auto;">A look <em>across</em> the <strong>platform.</strong></h2>
+    </div>
+    <div class="section-inner" style="max-width: 1000px; margin: 0 auto;">
+      <div class="shot-frame reveal">
+        <img class="shot" src="assets/screenshots/supply-chain.jpg" alt="Sales & Distribution Cloud additional view">
+        <div class="shot-caption">Sales & Distribution Cloud · Companion Module View</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px;" id="ai-grid">
+      <div class="reveal">
+        <div class="eyebrow">AI Copilot</div>
+        <h2 class="section-title" style="margin-bottom: 32px;">Capabilities <em>that compound</em> <strong>with use.</strong></h2>
+        <ul style="list-style: none; padding: 0;"><li style="padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-soft);"><span style="position: absolute; left: 0; top: 14px; width: 18px; height: 18px; background: linear-gradient(135deg, var(--teal-deep), var(--teal)); color: var(--cream); border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700;">AI</span>Next-best-action recommendations for each retailer visit</li><li style="padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-soft);"><span style="position: absolute; left: 0; top: 14px; width: 18px; height: 18px; background: linear-gradient(135deg, var(--teal-deep), var(--teal)); color: var(--cream); border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700;">AI</span>Auto-detect underperforming beats and recommend re-routing</li><li style="padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-soft);"><span style="position: absolute; left: 0; top: 14px; width: 18px; height: 18px; background: linear-gradient(135deg, var(--teal-deep), var(--teal)); color: var(--cream); border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700;">AI</span>Predict reorder windows by SKU × outlet combination</li><li style="padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-soft);"><span style="position: absolute; left: 0; top: 14px; width: 18px; height: 18px; background: linear-gradient(135deg, var(--teal-deep), var(--teal)); color: var(--cream); border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700;">AI</span>Coach reps with on-phone playbooks based on conversion patterns</li><li style="padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-soft);"><span style="position: absolute; left: 0; top: 14px; width: 18px; height: 18px; background: linear-gradient(135deg, var(--teal-deep), var(--teal)); color: var(--cream); border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700;">AI</span>Forecast secondary sales 4 weeks out with explainable drivers</li><li style="padding: 12px 0 12px 28px; position: relative; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-soft);"><span style="position: absolute; left: 0; top: 14px; width: 18px; height: 18px; background: linear-gradient(135deg, var(--teal-deep), var(--teal)); color: var(--cream); border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700;">AI</span>Flag inventory imbalances at distributor before stockouts hit retail</li></ul>
+      </div>
+      <div class="shot-frame reveal">
+        <img class="shot" src="assets/screenshots/ai-platform.jpg" alt="AI Copilot dashboard">
+        <div class="shot-caption">AI Copilot · Embedded Across Workflows</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner reveal">
+      <div class="eyebrow">Industries Served</div>
+      <h2 class="section-title">Built for <em>operators</em> who need it to <strong>just work.</strong></h2>
+    </div>
+    <div class="section-inner reveal" style="display: flex; flex-wrap: wrap; gap: 12px;"><span class="ai-badge" style="padding: 8px 14px; font-size: 11px; background: var(--cream-light); color: var(--teal-deep); border: 1px solid var(--line);">FMCG</span><span class="ai-badge" style="padding: 8px 14px; font-size: 11px; background: var(--cream-light); color: var(--teal-deep); border: 1px solid var(--line);">Pharmaceuticals</span><span class="ai-badge" style="padding: 8px 14px; font-size: 11px; background: var(--cream-light); color: var(--teal-deep); border: 1px solid var(--line);">Consumer Electronics</span><span class="ai-badge" style="padding: 8px 14px; font-size: 11px; background: var(--cream-light); color: var(--teal-deep); border: 1px solid var(--line);">Beverages</span><span class="ai-badge" style="padding: 8px 14px; font-size: 11px; background: var(--cream-light); color: var(--teal-deep); border: 1px solid var(--line);">Personal Care</span><span class="ai-badge" style="padding: 8px 14px; font-size: 11px; background: var(--cream-light); color: var(--teal-deep); border: 1px solid var(--line);">Agri-Inputs</span><span class="ai-badge" style="padding: 8px 14px; font-size: 11px; background: var(--cream-light); color: var(--teal-deep); border: 1px solid var(--line);">Building Materials</span><span class="ai-badge" style="padding: 8px 14px; font-size: 11px; background: var(--cream-light); color: var(--teal-deep); border: 1px solid var(--line);">Tobacco</span><span class="ai-badge" style="padding: 8px 14px; font-size: 11px; background: var(--cream-light); color: var(--teal-deep); border: 1px solid var(--line);">Spirits</span></div>
+  </section>
+
+  <section class="section" style="background: linear-gradient(180deg, transparent, rgba(184, 146, 79, 0.05) 50%, transparent);">
+    <div class="section-inner reveal">
+      <div class="eyebrow">Integrations</div>
+      <h2 class="section-title">Plays well with <em>everything</em> you already <strong>run.</strong></h2>
+    </div>
+    <div class="section-inner module-list reveal"><div class="module" style="padding: 12px 16px;"><div class="module-name" style="font-size: 13px;">SAP</div></div><div class="module" style="padding: 12px 16px;"><div class="module-name" style="font-size: 13px;">Oracle ERP</div></div><div class="module" style="padding: 12px 16px;"><div class="module-name" style="font-size: 13px;">QuickBooks</div></div><div class="module" style="padding: 12px 16px;"><div class="module-name" style="font-size: 13px;">Tally</div></div><div class="module" style="padding: 12px 16px;"><div class="module-name" style="font-size: 13px;">Salesforce CRM</div></div><div class="module" style="padding: 12px 16px;"><div class="module-name" style="font-size: 13px;">WhatsApp Business</div></div><div class="module" style="padding: 12px 16px;"><div class="module-name" style="font-size: 13px;">PowerBI</div></div><div class="module" style="padding: 12px 16px;"><div class="module-name" style="font-size: 13px;">Google Maps</div></div><div class="module" style="padding: 12px 16px;"><div class="module-name" style="font-size: 13px;">Razorpay / Stripe</div></div></div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner reveal">
+      <div class="eyebrow">Pricing</div>
+      <h2 class="section-title">Start <em>small.</em> Scale when ready.</h2>
+      <p class="section-lead">Custom enterprise pricing for multi-product, multi-country deployments.</p>
+    </div>
+    <div class="section-inner price-grid">
+      <div class="price reveal">
+        <div class="price-tier">Starter</div>
+        <div class="price-desc">Up to 25 field reps</div>
+        <ul><li>Order booking app</li><li>Basic beat planning</li><li>Secondary sales dashboard</li><li>Email support</li></ul>
+        <a class="btn btn-secondary" href="demo.html" style="text-align: center; justify-content: center;">Get a Quote</a>
+      </div>
+      <div class="price featured reveal">
+        <div class="price-tier">Growth</div>
+        <div class="price-desc">Up to 200 field reps</div>
+        <ul><li>Everything in Starter</li><li>Route optimization</li><li>Distributor management</li><li>AI Sales Copilot (Lite)</li><li>Priority support</li></ul>
+        <a class="btn btn-primary" href="demo.html" style="text-align: center; justify-content: center;">Get a Quote</a>
+      </div>
+      <div class="price reveal">
+        <div class="price-tier">Enterprise</div>
+        <div class="price-desc">Unlimited reps · Multi-country</div>
+        <ul><li>Everything in Growth</li><li>Full AI Sales Copilot</li><li>Custom integrations</li><li>Multi-country / multi-brand</li><li>Dedicated success manager</li><li>99.95% SLA</li></ul>
+        <a class="btn btn-secondary" href="demo.html" style="text-align: center; justify-content: center;">Talk to Sales</a>
+      </div>
+      <div class="price reveal">
+        <div class="price-tier">Custom</div>
+        <div class="price-desc">White-label / private deployment</div>
+        <ul><li>Self-hosted / private cloud</li><li>Custom branding</li><li>Source code escrow</li><li>Quarterly business reviews</li><li>Onsite implementation</li></ul>
+        <a class="btn btn-secondary" href="demo.html" style="text-align: center; justify-content: center;">Contact Us</a>
+      </div></div>
+  </section>
+</main>
+
+<section class="cta-strip">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">See it Running</div>
+    <h2 class="cta-title reveal">Book a <strong>30-minute</strong> <em>tailored demo.</em></h2>
+    <p class="cta-sub reveal">We'll walk you through Sales & Distribution Cloud with real workflows and your industry's data shape.</p>
+    <div class="btn-group reveal" style="justify-content: center;">
+      <a class="btn btn-primary" href="demo.html">Request Demo</a>
+      <a class="btn btn-secondary" href="products.html">View All Platforms</a>
+    </div>
+  </div>
+</section>
+
+<style>@media (max-width:980px){ #ai-grid { grid-template-columns:1fr !important; gap:40px !important; } }</style>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand-block">
+        <div class="logo-row">
+          <img src="assets/logo.png" alt="Infooware">
+          <span>Infooware</span>
+        </div>
+        <p>Enterprise software platforms with built-in AI and industry intelligence. Production-grade products that run real businesses across India, Africa, and the US.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Products</h5>
+        <ul>
+          <li><a href="product-sales-cloud.html">Sales &amp; Distribution Cloud</a></li>
+          <li><a href="product-healthcare-cloud.html">Healthcare Cloud</a></li>
+          <li><a href="product-marketplace.html">Digital Marketplace</a></li>
+          <li><a href="product-audit-compliance.html">Audit Risk &amp; Compliance</a></li>
+          <li><a href="products.html">View all 11 platforms →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="industry-solutions.html#agriculture">Agriculture</a></li>
+          <li><a href="industry-solutions.html#healthcare">Healthcare</a></li>
+          <li><a href="industry-solutions.html#fmcg">FMCG</a></li>
+          <li><a href="industry-solutions.html#retail">Retail</a></li>
+          <li><a href="ai.html">AI Across Products</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Program</h5>
+        <ul>
+          <li><a href="partners.html">Partner Program</a></li>
+          <li><a href="demo.html">Request a Demo</a></li>
+          <li><a href="mailto:hemant@infooware.com">hemant@infooware.com</a></li>
+          <li><a href="tel:+916359693055">+91 63596 93055</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© Infooware Platforms · Enterprise software with built-in AI</div>
+      <div>Ahmedabad, India · United States · <a href="mailto:hemant@infooware.com">hemant@infooware.com</a></div>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>

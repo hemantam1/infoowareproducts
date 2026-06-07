@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI agents and copilots embedded in every Infooware platform — knowledge, workflow, sales, compliance, learning, support agents and predictive analytics.">
+<title>AI Across Every Product · Infooware Platforms</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+<style>
+/* ===== Screenshot styling ===== */
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow:
+    0 1px 2px rgba(31, 92, 107, 0.08),
+    0 12px 32px rgba(31, 92, 107, 0.18),
+    0 32px 64px rgba(31, 92, 107, 0.10);
+  border: 1px solid var(--line);
+  background: #fff;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+.shot:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 2px 4px rgba(31, 92, 107, 0.10),
+    0 24px 48px rgba(31, 92, 107, 0.22),
+    0 48px 80px rgba(31, 92, 107, 0.12);
+}
+.shot-frame {
+  position: relative;
+  border-radius: 16px;
+  padding: 24px;
+  background: linear-gradient(135deg, var(--cream-light) 0%, var(--cream-dark) 100%);
+  margin: 0;
+}
+.shot-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: radial-gradient(circle at 30% 0%, rgba(45, 141, 168, 0.10), transparent 60%);
+  pointer-events: none;
+}
+.shot-frame img { position: relative; }
+.shot-caption {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 18px;
+  font-weight: 600;
+}
+
+/* Hero with side-by-side text + screenshot */
+.hero-with-shot {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (max-width: 980px) {
+  .hero-with-shot { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* Card with embedded thumbnail */
+.product-card-shot {
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.product-card-shot .shot-wrap {
+  background: linear-gradient(135deg, #F4ECD8 0%, #E8DCC0 100%);
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.product-card-shot .shot-wrap img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+  box-shadow: 0 4px 16px rgba(31, 92, 107, 0.12);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-card-shot:hover .shot-wrap img { transform: scale(1.02); }
+.product-card-shot .body { padding: 28px 28px 28px; flex: 1; display: flex; flex-direction: column; }
+
+/* Client logos strip — uses the image23 collage cropped */
+.trust-strip {
+  padding: 56px 32px;
+  background: var(--cream-light);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.trust-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+.trust-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.trust-headline {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--teal-deep);
+  margin-bottom: 36px;
+}
+.trust-headline em { font-style: italic; }
+.trust-headline strong { font-weight: 700; font-style: normal; }
+.trust-logos {
+  display: block;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(31, 92, 107, 0.10);
+}
+
+/* Product hero with bigger detail screenshot */
+.product-detail-hero {
+  padding: 80px 32px 60px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.product-detail-hero .shot-frame {
+  margin-top: 48px;
+  padding: 28px;
+}
+
+/* Feature row — alternating screenshot + text */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 64px 0;
+  border-bottom: 1px solid var(--line);
+}
+.feature-row:last-of-type { border-bottom: none; }
+.feature-row.reverse { direction: rtl; }
+.feature-row.reverse > * { direction: ltr; }
+@media (max-width: 980px) {
+  .feature-row { grid-template-columns: 1fr; gap: 40px; padding: 48px 0; }
+  .feature-row.reverse { direction: ltr; }
+}
+.feature-text h3 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.feature-text h3 em { font-style: italic; color: var(--teal-deep); }
+.feature-text h3 strong { font-weight: 700; font-style: normal; }
+.feature-text .feature-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.feature-text p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+.feature-text ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+}
+.feature-text ul li {
+  font-size: 14px;
+  padding: 6px 0 6px 22px;
+  position: relative;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.feature-text ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+</style>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="topbar-brand" href="index.html">
+      <img src="assets/logo.png" alt="Infooware">
+      <span class="topbar-brand-text">
+        <span class="name">Infooware</span>
+        <span class="tag">Platforms</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="nav"><a href="index.html">Home</a><a href="products.html">Products</a><a href="industry-solutions.html">Industry Solutions</a><a href="ai.html" class="active">AI</a><a href="partners.html">Partners</a></nav>
+    <a class="topbar-cta" href="demo.html">Request Demo</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-with-shot">
+      <div class="reveal">
+        <div class="product-hero-strip"><span class="dot"></span> THE AI LAYER</div>
+        <h1 class="display">
+          <strong>AI agents</strong> in every<br>
+          <em>workflow</em> that <strong>matters.</strong>
+        </h1>
+        <p class="lead">
+          We don't ship AI as a sidebar. We embed agents where they earn their keep:
+          closing deals, catching compliance gaps, surfacing the next-best-action.
+        </p>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="demo.html">See AI in a Live Demo</a>
+          <a class="btn btn-secondary" href="products.html">Explore Platforms</a>
+        </div>
+      </div>
+      <div class="shot-frame reveal">
+        <img class="shot" src="assets/screenshots/ai-platform.jpg" alt="AI Platform dashboard">
+        <div class="shot-caption">AI for Scale &amp; Efficiency · Live Workflow Engine</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner reveal">
+      <div class="eyebrow">Six Agent Patterns</div>
+      <h2 class="section-title">All our AI <em>reduces to</em> <strong>six reusable patterns.</strong></h2>
+      <p class="section-lead">Each agent in each product is an instance of one of these six. That unification is what lets us ship faster — and what makes AI quality compound across our customer base.</p>
+    </div>
+    <div class="section-inner card-grid card-grid-3">
+      <div class="card reveal">
+        <span class="card-num">AGENT · 01</span>
+        <h3 class="card-title">Knowledge Agents</h3>
+        <p>RAG-powered assistants that turn enterprise documents, SOPs, contracts, regulations into instant, cited answers — grounded in <em>your</em> data, not the open web.</p>
+        <ul class="card-list">
+          <li>Vector + keyword hybrid retrieval</li>
+          <li>Citation back to source</li>
+          <li>Role-based access control</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">AGENT · 02</span>
+        <h3 class="card-title">Workflow Agents</h3>
+        <p>Automation that drives processes end-to-end across modules — onboarding flows, approval chains, dispatch logic. No more glue code or ETL piping.</p>
+        <ul class="card-list">
+          <li>Cross-module orchestration</li>
+          <li>Human-in-the-loop checkpoints</li>
+          <li>Audit trail of every decision</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">AGENT · 03</span>
+        <h3 class="card-title">Sales Agents</h3>
+        <p>Lead qualification, deal coaching, next-best-action — embedded directly in CRM, field sales and customer engagement modules.</p>
+        <ul class="card-list">
+          <li>Outlet-level next-best-action</li>
+          <li>Win-loss pattern detection</li>
+          <li>Live coaching on rep mobile</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">AGENT · 04</span>
+        <h3 class="card-title">Compliance Agents</h3>
+        <p>Audit-ready, alert-on-violation copilots that scan workflows continuously and catch gaps before regulators or auditors do.</p>
+        <ul class="card-list">
+          <li>Continuous policy scanning</li>
+          <li>Pre-emptive risk flags</li>
+          <li>Auto-generated audit packages</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">AGENT · 05</span>
+        <h3 class="card-title">Learning Agents</h3>
+        <p>Personalized study paths, auto-evaluation and skill-gap detection across institutions, corporate L&amp;D programs, and customer enablement.</p>
+        <ul class="card-list">
+          <li>Adaptive learning paths</li>
+          <li>Auto-grading of open answers</li>
+          <li>Skill-gap heat maps</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">AGENT · 06</span>
+        <h3 class="card-title">Customer Support Agents</h3>
+        <p>First-line WhatsApp / chat / voice support that resolves common cases end-to-end — and escalates intelligently with full context.</p>
+        <ul class="card-list">
+          <li>WhatsApp + Voice + Web</li>
+          <li>CRM-aware responses</li>
+          <li>Smart escalation to humans</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: linear-gradient(180deg, transparent, rgba(31, 92, 107, 0.04) 50%, transparent);">
+    <div class="section-inner reveal">
+      <div class="eyebrow">Predictive Analytics</div>
+      <h2 class="section-title">Forecasts <em>that move</em> the <strong>dashboard.</strong></h2>
+      <p class="section-lead">Sales forecasting, demand planning, churn prediction, no-show prediction, inventory recommendations — built once, available across every product.</p>
+    </div>
+    <div class="section-inner module-list">
+      <div class="module"><div class="module-icon">📈</div><div class="module-name">Sales Forecasting</div></div>
+      <div class="module"><div class="module-icon">📊</div><div class="module-name">Demand Planning</div></div>
+      <div class="module"><div class="module-icon">⚠️</div><div class="module-name">Churn Prediction</div></div>
+      <div class="module"><div class="module-icon">🏥</div><div class="module-name">No-Show Prediction</div></div>
+      <div class="module"><div class="module-icon">📦</div><div class="module-name">Inventory Optimization</div></div>
+      <div class="module"><div class="module-icon">🔔</div><div class="module-name">Anomaly Detection</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner reveal">
+      <div class="eyebrow">How We Build It</div>
+      <h2 class="section-title">Production AI. <em>Not</em> <strong>demoware.</strong></h2>
+    </div>
+    <div class="section-inner card-grid card-grid-2">
+      <div class="card reveal">
+        <span class="card-num">PRINCIPLE</span>
+        <h3 class="card-title">Grounded in your data</h3>
+        <p>Every agent is grounded in your tenant's data — never trained on, never leaked across customers. Vector stores are isolated per tenant.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">PRINCIPLE</span>
+        <h3 class="card-title">Eval &amp; feedback by default</h3>
+        <p>Every agent ships with an evaluation harness and a feedback loop. We measure quality continuously and improve from real usage.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">PRINCIPLE</span>
+        <h3 class="card-title">Human-in-the-loop where it matters</h3>
+        <p>High-risk actions — prescriptions, large transactions, compliance decisions — always route through a human checkpoint with full context.</p>
+      </div>
+      <div class="card reveal">
+        <span class="card-num">PRINCIPLE</span>
+        <h3 class="card-title">Model-agnostic by design</h3>
+        <p>OpenAI, Anthropic, open-source — we pick the right model per workflow and swap as the frontier shifts. You're not locked in.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="cta-strip">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">See it Live</div>
+    <h2 class="cta-title reveal">Watch an <strong>AI copilot</strong> <em>solve a real</em> workflow.</h2>
+    <p class="cta-sub reveal">No slideware. A live agent. Your industry's data shape. 30 minutes.</p>
+    <div class="btn-group reveal" style="justify-content: center;">
+      <a class="btn btn-primary" href="demo.html">Request AI Demo</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand-block">
+        <div class="logo-row">
+          <img src="assets/logo.png" alt="Infooware">
+          <span>Infooware</span>
+        </div>
+        <p>Enterprise software platforms with built-in AI and industry intelligence. Production-grade products that run real businesses across India, Africa, and the US.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Products</h5>
+        <ul>
+          <li><a href="product-sales-cloud.html">Sales &amp; Distribution Cloud</a></li>
+          <li><a href="product-healthcare-cloud.html">Healthcare Cloud</a></li>
+          <li><a href="product-marketplace.html">Digital Marketplace</a></li>
+          <li><a href="product-audit-compliance.html">Audit Risk &amp; Compliance</a></li>
+          <li><a href="products.html">View all 11 platforms →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="industry-solutions.html#agriculture">Agriculture</a></li>
+          <li><a href="industry-solutions.html#healthcare">Healthcare</a></li>
+          <li><a href="industry-solutions.html#fmcg">FMCG</a></li>
+          <li><a href="industry-solutions.html#retail">Retail</a></li>
+          <li><a href="ai.html">AI Across Products</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Program</h5>
+        <ul>
+          <li><a href="partners.html">Partner Program</a></li>
+          <li><a href="demo.html">Request a Demo</a></li>
+          <li><a href="mailto:hemant@infooware.com">hemant@infooware.com</a></li>
+          <li><a href="tel:+916359693055">+91 63596 93055</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© Infooware Platforms · Enterprise software with built-in AI</div>
+      <div>Ahmedabad, India · United States · <a href="mailto:hemant@infooware.com">hemant@infooware.com</a></div>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>
